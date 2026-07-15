@@ -50,8 +50,7 @@ jobs:
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            cd /opt/tech  
-            ls         
+            cd /opt/tech          
             docker-compose down || true
             docker-compose pull
             docker-compose up --build -d
