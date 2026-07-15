@@ -40,7 +40,7 @@ jobs:
           username: ${{ secrets.VPS_USER }}
           key:  ${{ secrets.SSH_PRIVATE_KEY }}
           source: "target/*.jar,docker-compose.yml,Dockerfile"
-          target: /opt/tech
+          target: /opt/techstore
           strip_components: 0
 
       - name: Deploy to VPS
@@ -50,7 +50,7 @@ jobs:
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            cd /opt/tech          
+            cd /opt/techstore          
             docker-compose down || true
             docker-compose pull
             docker-compose up --build -d
