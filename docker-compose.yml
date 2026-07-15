@@ -2,13 +2,14 @@ version: '3.8'
 
 volumes:
   mysql-data:
+
 networks:
   spring-boot-mysql-network:
     name: spring-boot-mysql-network
+
 services:
   mysqldb:
     image: mysql:lts
-    command: --mysql-native-password=ON
     ports:
       - "3308:3306"
     environment:
@@ -21,10 +22,11 @@ services:
     volumes:
       - mysql-data:/var/lib/mysql
     healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "techstore_user", "-p4/OobApyR7HLWGWR/2xzGVAzYnqoLzFbCxT/kNVVDXs="]
       retries: 5
       interval: 3s
       timeout: 30s
+
   techstore:
     build: .
     ports:
@@ -34,7 +36,7 @@ services:
         condition: service_healthy
     environment:
       - SPRING_PROFILES_ACTIVE=dev
-      - SPRING_DATASOURCE_URL=jdbc:mysql://mysqldb:3306/techstore
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysqldb:3306/techstore?allowPublicKeyRetrieval=true&useSSL=false
       - SPRING_DATASOURCE_USERNAME=techstore_user
       - SPRING_DATASOURCE_PASSWORD=4/OobApyR7HLWGWR/2xzGVAzYnqoLzFbCxT/kNVVDXs=
     networks:
