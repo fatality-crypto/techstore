@@ -38,7 +38,7 @@ jobs:
         with:
           host: ${{ secrets.VPS_IP }}
           username: ${{ secrets.VPS_USER }}
-          key:  ${{ secrets.SSH_PRIVATE }}
+          key:  ${{ secrets.SSH_PRIVATE_KEY }}
           source: "target/*.jar,docker-compose.yml,Dockerfile"
           target: /opt/techstore
           strip_components: 0
@@ -48,7 +48,7 @@ jobs:
         with:
           host: ${{ secrets.VPS_IP }}
           username: ${{ secrets.VPS_USER }}
-          key: ${{ secrets.SSH_PRIVATE }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             cd /opt/tech          
             docker-compose down || true
