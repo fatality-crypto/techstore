@@ -30,7 +30,7 @@ services:
   techstore:
     build: .
     ports:
-      - "8080:8080"
+      - "8000:8000"
     depends_on:
       mysqldb:
         condition: service_healthy
