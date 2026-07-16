@@ -51,6 +51,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             cd /opt/tech
+            ls
             docker-compose down || true
             docker-compose pull
             docker-compose up --build -d
