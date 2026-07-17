@@ -52,6 +52,7 @@ jobs:
           script: |
             cd /opt/techstore 
             docker-compose down || true
+            ls
             docker-compose pull
             docker-compose up --build -d
             docker image prune -f
