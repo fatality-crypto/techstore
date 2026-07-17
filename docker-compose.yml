@@ -11,7 +11,7 @@ services:
   mysqldb:
     image: mysql:lts
     ports:
-      - "3308:3306"
+      - "3318:3316"
     environment:
       - MYSQL_DATABASE=techstore
       - MYSQL_USER=techstore_user
